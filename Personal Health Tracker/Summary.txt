@@ -1,0 +1,75 @@
+*******Creating table into database*******
+
+create table adduser(id int auto_increment primary key,name varchar(200),age int,gender varchar(10),height float,weight float,haemoglobin int,bp int,spo2 int);
+
+create table addbpspo2(id int,bp int,spo2 int,foreign key (id) references adduser(id));
+
+create table addhaemoglobinweight(id int,haemoglobin int,weight float,foreign key (id) references adduser(id));
+
+
+
+*************Health tracker project Summary**********
+
+Importing Libraries:
+The tkinter library is used for creating the GUI (Graphical User Interface) for the application.
+The mysql.connector library is used to connect to a MySQL database.
+The messagebox module from tkinter is used to display message boxes for user notifications.
+
+Creating the main window:
+Tk() creates the main window of the application.
+title() sets the title of the window.
+geometry() sets the initial size of the window.
+minsize() and maxsize() set the minimum and maximum dimensions of the window.
+
+Establishing a database connection:
+connect() is used to establish a connection to the MySQL database.
+You need to provide the appropriate host, user, password, and database name to establish the connection.
+
+Creating the top frame:
+Frame() creates a frame within the main window.
+Label() creates a label within the frame to display the title.
+The pack() method is used to organize and display the widgets in the frame.
+fill=X expands the frame horizontally to fill the entire width of the window.
+
+Adding a user:
+This function is called when the "Add User" button is clicked.
+It creates a new frame (frame3) to display the user input fields and labels.
+
+Creating input fields and labels:
+Entry() creates an input field within the frame3 frame.
+place() is used to position the input field at a specific location within the frame.
+Similar steps are followed for creating other input fields (Age, Gender, Weight, Height) and their corresponding labels.
+
+Submitting user data:
+This function is called when the "Submit" button is clicked to submit the user data to the database.
+It retrieves the values entered in the input fields using get() method.
+The SQL query is defined to insert the user data into the adduser table.
+cursor.execute() is used to execute the query with the provided values.
+If the execution is successful, the data is committed to the database.
+
+Displaying user data:
+This function is called when the "Display Users" button is clicked.
+It retrieves all the rows from the adduser table using the SQL query.
+cursor.fetchall() fetches all the rows as a list of tuples.
+The data is displayed in a message box using msg.showinfo().
+
+Creating buttons:
+Button() creates buttons within the frame1 frame.
+The buttons have various properties such as text, font, background color, foreground color, relief style, and command (the function to be executed when clicked).
+The buttons are organized using the pack() method.
+
+Running the GUI:
+mainloop() is called to run the GUI application and handle user interactions.
+That's an overview of the code! It creates a simple GUI application using the Tkinter library to add and display user data in a MySQL database.
+
+*********Advantages*************
+User Data Management: Your application allows users to input and store their health-related information such as name, age, gender, weight, and height. This data can be valuable for tracking progress, analyzing trends, or generating personalized reports.
+
+Health Monitoring: Users can regularly update their health data, enabling them to monitor changes over time. This can be useful for tracking weight loss or gain, analyzing trends in vital signs, or keeping a record of physical measurements.
+
+Goal Setting and Tracking: The application could include features for users to set health goals and track their progress. This could involve setting targets for weight loss, fitness milestones, or other health-related objectives. Users can monitor their progress and adjust their efforts accordingly.
+
+Data Visualization: Your project could include visualizations such as graphs or charts to present the user's health data in a more intuitive and understandable manner. Visual representations can help users identify patterns, trends, or areas that require attention.
+
+Reminders and Notifications: You could implement features to set reminders for tasks related to health, such as medication reminders, exercise schedules, or regular check-ups. Notifications can help users stay on track and maintain a healthy lifestyle.
+
